@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BotanIQ | Crop Disease Intelligence</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-leaf logo-icon"></i>
+                    <div class="logo-text">
+                        <span class="brand-title">BotanIQ</span>
+                        <span class="brand-subtitle">BotanIQ Platform</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-tab="landing">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item" data-tab="diagnostics">
+                    <i class="fa-solid fa-flask-vial"></i>
+                    <span>Diagnostic Lab</span>
+                </button>
+                <button class="nav-item" data-tab="advisory">
+                    <i class="fa-solid fa-cloud-sun-rain"></i>
+                    <span>Advisory Center</span>
+                </button>
+                <button class="nav-item" data-tab="dashboard">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <span>Outbreak Map</span>
+                </button>
+                <button class="nav-item" data-tab="historical">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Historical Trends</span>
+                </button>
+                <button class="nav-item" data-tab="archive">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Archive Ledger</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <span class="status-indicator online"></span>
+                    <span class="status-label">FastAPI Core Active</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Area -->
+        <main class="workspace">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h2 class="section-title" id="page-title">Welcome to BotanIQ</h2>
+                </div>
+                <div class="top-bar-right">
+                    <div class="theme-toggle" id="theme-toggle">
+                        <i class="fa-solid fa-moon dark-icon"></i>
+                        <i class="fa-solid fa-sun light-icon"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-viewport">
+                
+                <!-- ================= LANDING VIEW ================= -->
+                <section class="tab-view active" id="view-landing">
+                    <!-- Hero Grid -->
+                    <div class="hero-section">
+                        <div class="hero-content">
+                            <div class="intelligence-badge">
+                                <i class="fa-solid fa-sparkles animate-pulse"></i>
+                                <span>Powered by Gemini Vision + FAO/USDA/CGIAR Intelligence</span>
+                            </div>
+                            <h1 class="hero-title">
+                                AI-Powered Global <br>
+                                <span class="gradient-text">Crop Disease Intelligence</span>
+                            </h1>
+                            <p class="hero-desc">
+                                BotanIQ is the commercial-grade agricultural decision matrix. We empower farmers, researchers, and agribusiness organizations with instant vision diagnostics, global outbreak alerts, and weather-driven crop risk indexing.
+                            </p>
+                            <div class="hero-buttons">
+                                <button class="btn btn-primary" onclick="switchTab('diagnostics')">
+                                    <span>Analyze Crop Leaf</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <button class="btn btn-secondary" onclick="switchTab('dashboard')">
+                                    <span>Explore Outbreak Map</span>
+                                    <i class="fa-solid fa-map"></i>
+                                </button>
+                            </div>
+                            <!-- Bullet Credibility List -->
+                            <div class="credibility-list">
+                                <div class="cred-item">
+                                    <i class="fa-solid fa-circle-check text-sage"></i>
+                                    <span>Real-time Gemini Vision</span>
+                                </div>
+                                <div class="cred-item">
+                                    <i class="fa-solid fa-circle-check text-sage"></i>
+                                    <span>FAO & USDA Integrated</span>
+                                </div>
+                                <div class="cred-item">
+                                    <i class="fa-solid fa-circle-check text-sage"></i>
+                                    <span>Weather-Risk Indexing</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Globe Column -->
+                        <div class="hero-visual">
+                            <div class="interactive-globe-container">
+                                <!-- Vector SVG Interactive Globe Mockup -->
+                                <svg class="animated-globe" viewBox="0 0 400 400">
+                                    <defs>
+                                        <radialGradient id="globe-glow" cx="50%" cy="50%" r="50%">
+                                            <stop offset="0%" stop-color="var(--olive-light)" stop-opacity="0.25"/>
+                                            <stop offset="100%" stop-color="var(--olive)" stop-opacity="0"/>
+                                        </radialGradient>
+                                    </defs>
+                                    <circle cx="200" cy="200" r="180" fill="url(#globe-glow)" />
+                                    <circle cx="200" cy="200" r="150" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="2" />
+                                    <!-- Grid lines inside globe -->
+                                    <path d="M 200,50 A 150,150 0 0,0 200,350" fill="none" stroke="var(--card-border)" stroke-dasharray="3,3" />
+                                    <path d="M 200,50 A 75,150 0 0,0 200,350" fill="none" stroke="var(--card-border)" stroke-dasharray="3,3" />
+                                    <path d="M 200,50 A 75,150 0 0,1 200,350" fill="none" stroke="var(--card-border)" stroke-dasharray="3,3" />
+                                    <path d="M 200,50 A 150,150 0 0,1 200,350" fill="none" stroke="var(--card-border)" stroke-dasharray="3,3" />
+                                    <line x1="50" y1="200" x2="350" y2="200" stroke="var(--card-border)" stroke-dasharray="3,3" />
+                                    <line x1="70" y1="120" x2="330" y2="120" stroke="var(--card-border)" stroke-dasharray="3,3" />
+                                    <line x1="70" y1="280" x2="330" y2="280" stroke="var(--card-border)" stroke-dasharray="3,3" />
+                                    
+                                    <!-- Rotating group simulating orbital paths -->
+                                    <g class="rotating-elements">
+                                        <!-- Interactive Outbreak Markers -->
+                                        <circle cx="120" cy="140" r="6" fill="var(--risk-high)" class="map-dot-pulse" />
+                                        <path d="M120 140 L160 110" stroke="var(--risk-high)" stroke-width="1.5" opacity="0.6" />
+                                        
+                                        <circle cx="260" cy="160" r="6" fill="var(--risk-high)" class="map-dot-pulse" />
+                                        <circle cx="210" cy="240" r="5" fill="var(--risk-medium)" class="map-dot-pulse" />
+                                        <circle cx="160" cy="280" r="6" fill="var(--risk-high)" class="map-dot-pulse" />
+                                        <circle cx="310" cy="220" r="5" fill="var(--risk-low)" class="map-dot-pulse" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Strip -->
+                    <div class="stats-strip">
+                        <div class="stats-card">
+                            <span class="stats-value">85+</span>
+                            <span class="stats-label">Monitored Regions</span>
+                        </div>
+                        <div class="stats-card">
+                            <span class="stats-value">84.2%</span>
+                            <span class="stats-label">Global Threat Index</span>
+                        </div>
+                        <div class="stats-card">
+                            <span class="stats-value" id="stats-total-diagnoses">48.5K+</span>
+                            <span class="stats-label">Diagnostics Run</span>
+                        </div>
+                        <div class="stats-card">
+                            <span class="stats-value">98.4%</span>
+                            <span class="stats-label">Early Detection Rate</span>
+                        </div>
+                    </div>
+
+                    <!-- Features Grid -->
+                    <div class="features-section">
+                        <div class="section-header-centered">
+                            <h2>Complete Agricultural Control Matrix</h2>
+                            <p>BotanIQ bundles high-resolution vision modeling with global macro datasets to protect crops from planting to harvest.</p>
+                        </div>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <div class="feat-icon-box bg-olive-grad">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                </div>
+                                <h3>Disease Detection</h3>
+                                <p>Upload leaf or crop photos to instantly scan for bacterial, fungal, and pest diseases using Gemini 2.5-flash Vision.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feat-icon-box bg-sage-grad">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </div>
+                                <h3>Global Disease Mapping</h3>
+                                <p>Access regional outbreaks and threat vectors mapped globally from verified USDA, FAO, and CGIAR intelligence channels.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feat-icon-box bg-brown-grad">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                </div>
+                                <h3>Historical Analytics</h3>
+                                <p>Identify seasonal disease patterns, regional outbreak spreads, and crop-loss metrics to predict next season's risks.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feat-icon-box bg-clay-grad">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+                                <h3>Weather-Based Risk Insights</h3>
+                                <p>Analyze local micro-climates and calculate custom bio-meteorological fungal and bacterial risk indexes.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feat-icon-box bg-forest-grad">
+                                    <i class="fa-solid fa-book-open"></i>
+                                </div>
+                                <h3>Treatment Recommendations</h3>
+                                <p>Receive immediate treatment schedules covering chemical, biological, and cultural controls tailored to specific crops.</p>
+                            </div>
+                            <div class="feature-item scientific-card">
+                                <div class="scientific-content">
+                                    <div class="feat-icon-box bg-light-green">
+                                        <i class="fa-solid fa-database"></i>
+                                    </div>
+                                    <h3>Scientific Database Integration</h3>
+                                    <p>Our models cross-reference findings with localized threat advisories and historical progression charts compiled by world-class food security organizations.</p>
+                                </div>
+                                <div class="scientific-tags">
+                                    <span>FAO</span>
+                                    <span>USDA APHIS</span>
+                                    <span>CGIAR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call To Action Section -->
+                    <div class="cta-banner">
+                        <div class="cta-glow"></div>
+                        <i class="fa-solid fa-leaf cta-icon animate-float"></i>
+                        <h2>Ready to Protect Your Harvest with Advanced Intelligence?</h2>
+                        <p>Get started with instant image diagnostics or analyze regional weather indexes for your crop fields now.</p>
+                        <div class="cta-buttons">
+                            <button class="btn btn-accent" onclick="switchTab('diagnostics')">Run AI Diagnostic</button>
+                            <button class="btn btn-outline" onclick="switchTab('advisory')">Farmer Advisory Center</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= DIAGNOSTIC LAB VIEW ================= -->
+                <section class="tab-view" id="view-diagnostics">
+                    <div class="split-view">
+                        <!-- Input Column -->
+                        <div class="view-left">
+                            <div class="card card-input">
+                                <h3 class="card-title">
+                                    <i class="fa-solid fa-flask-conical title-icon"></i>
+                                    <span>Diagnostic Parameters</span>
+                                </h3>
+                                
+                                <div class="form-group">
+                                    <label class="input-label">Crop Classification Hint (Optional)</label>
+                                    <select id="crop-hint" class="input-select">
+                                        <option value="">Auto-detect (Gemini Vision)</option>
+                                        <option value="tomato">Tomato</option>
+                                        <option value="potato">Potato</option>
+                                        <option value="corn">Corn (Maize)</option>
+                                        <option value="wheat">Wheat</option>
+                                        <option value="apple">Apple</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="input-label">Crop Leaf Photo</label>
+                                    <div class="drop-zone" id="drop-zone">
+                                        <input type="file" id="file-input" class="hidden-input" accept="image/*">
+                                        <div class="drop-zone-prompt" id="drop-zone-prompt">
+                                            <div class="upload-icon-box">
+                                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                            </div>
+                                            <span class="upload-text-main">Drag crop leaf photo here</span>
+                                            <span class="upload-text-sub">Supports JPG, PNG up to 10MB</span>
+                                        </div>
+                                        <div class="preview-container hidden" id="preview-container">
+                                            <img id="image-preview" src="#" alt="Leaf preview" class="image-preview">
+                                            <div class="preview-overlay">
+                                                <span class="replace-text">Replace Image</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button id="btn-run-analysis" class="btn btn-primary btn-block" disabled>
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                    <span>Run Analysis</span>
+                                </button>
+                            </div>
+
+                            <!-- Guidelines Box -->
+                            <div class="guidelines-card">
+                                <span class="guidelines-title">Scanning Guidelines:</span>
+                                <ul class="guidelines-list">
+                                    <li>Focus on a single infected leaf canopy for higher confidence score.</li>
+                                    <li>Avoid high shadows or intense direct sunlight overlays.</li>
+                                    <li>Ensure leaf lesions or spots are clearly visible and in focus.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Results Column -->
+                        <div class="view-right">
+                            <!-- Empty Awaiting State -->
+                            <div class="result-placeholder" id="result-placeholder">
+                                <div class="placeholder-icon-box">
+                                    <i class="fa-solid fa-leaf"></i>
+                                </div>
+                                <h3>Awaiting Diagnostic Leaf Upload</h3>
+                                <p>Provide parameters and drop an image on the left to initiate the automated Google Gemini crop diagnostic scan.</p>
+                            </div>
+
+                            <!-- Loading State -->
+                            <div class="result-loading hidden" id="result-loading">
+                                <i class="fa-solid fa-spinner fa-spin loading-spinner"></i>
+                                <h3>BotanIQ Engine Running</h3>
+                                <p id="loading-step-text">Uploading leaf canopy image...</p>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                                </div>
+                            </div>
+
+                            <!-- Success Result Panel -->
+                            <div class="result-success-panel hidden" id="result-success-panel">
+                                <!-- Summary Header -->
+                                <div class="result-header-card">
+                                    <div class="header-card-left">
+                                        <div class="sprout-icon-box">
+                                            <i class="fa-solid fa-seedling"></i>
+                                        </div>
+                                        <div>
+                                            <span class="crop-type-tag" id="result-crop-type">Tomato Diagnostic</span>
+                                            <h2 class="disease-title" id="result-disease-name">Tomato Late Blight</h2>
+                                        </div>
+                                    </div>
+                                    <div class="header-card-right">
+                                        <div class="confidence-indicator">
+                                            <span class="conf-lbl">Confidence</span>
+                                            <span class="conf-val" id="result-confidence">94.5%</span>
+                                        </div>
+                                        <span class="severity-badge" id="result-severity">High Severity</span>
+                                    </div>
+                                </div>
+
+                                <!-- Explanation -->
+                                <div class="result-card">
+                                    <h4 class="card-subtitle">
+                                        <i class="fa-solid fa-circle-exclamation"></i>
+                                        <span>Disease Explanation</span>
+                                    </h4>
+                                    <p class="description-text" id="result-description">Late blight is a devastating disease caused by...</p>
+                                </div>
+
+                                <!-- Treatment Methods -->
+                                <div class="result-card">
+                                    <h4 class="card-subtitle">
+                                        <i class="fa-solid fa-clipboard-list"></i>
+                                        <span>Actionable Treatment Plans</span>
+                                    </h4>
+                                    <div class="treatment-grid" id="result-treatment-grid">
+                                        <!-- Dynamic cards inserted here -->
+                                    </div>
+                                </div>
+
+                                <!-- Prevention Checklist -->
+                                <div class="result-card">
+                                    <h4 class="card-subtitle">
+                                        <i class="fa-solid fa-shield-halved"></i>
+                                        <span>Prevention & Field Protocol</span>
+                                    </h4>
+                                    <div class="prevention-list" id="result-prevention-list">
+                                        <!-- Dynamic checklist items -->
+                                    </div>
+                                </div>
+
+                                <!-- File Metadata -->
+                                <div class="file-metadata-strip">
+                                    <span class="meta-label">Image logged locally: <strong id="result-filename">filename.jpg</strong></span>
+                                    <a id="result-image-link" href="#" target="_blank" class="view-link">
+                                        <span>View original</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= FARMER ADVISORY CENTER VIEW ================= -->
+                <section class="tab-view" id="view-advisory">
+                    <div class="split-view">
+                        <!-- Input Params -->
+                        <div class="view-left">
+                            <div class="card card-input">
+                                <h3 class="card-title">
+                                    <i class="fa-solid fa-calculator title-icon"></i>
+                                    <span>Farm Parameter Entry</span>
+                                </h3>
+                                
+                                <div class="form-group">
+                                    <label class="input-label">Geographic Location</label>
+                                    <input type="text" id="advisory-location" class="input-text" placeholder="e.g. California, Florida, Spain, India...">
+                                    <span class="input-help-text">Type 'Florida' for High Risk simulation or 'California' for Low Risk.</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="input-label">Cultivated Crop</label>
+                                    <select id="advisory-crop" class="input-select">
+                                        <option value="Tomato">Tomato</option>
+                                        <option value="Potato">Potato</option>
+                                        <option value="Corn">Corn (Maize)</option>
+                                        <option value="Wheat">Wheat</option>
+                                        <option value="Apple">Apple</option>
+                                    </select>
+                                </div>
+
+                                <button id="btn-calculate-risk" class="btn btn-primary btn-block">
+                                    <span>Calculate Risk Matrix</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Output Panel -->
+                        <div class="view-right">
+                            <!-- Placeholder -->
+                            <div class="result-placeholder" id="advisory-placeholder">
+                                <div class="placeholder-icon-box">
+                                    <i class="fa-solid fa-cloud-sun"></i>
+                                </div>
+                                <h3>Calculate Farm Risk Index</h3>
+                                <p>Provide your crop details and location on the left to calculate localized relative atmospheric pressure and threat vectors.</p>
+                            </div>
+
+                            <!-- Loading -->
+                            <div class="result-loading hidden" id="advisory-loading">
+                                <i class="fa-solid fa-cloud-sun-rain fa-bounce loading-spinner text-sage"></i>
+                                <h3>Querying weather telemetry...</h3>
+                                <p>Calculating plant leaf moisture retention indexes...</p>
+                            </div>
+
+                            <!-- Success Advisory Panel -->
+                            <div class="advisory-results hidden" id="advisory-results">
+                                <!-- Header Block -->
+                                <div class="advisory-header-card">
+                                    <div class="advisory-header-left">
+                                        <div class="station-icon-box">
+                                            <i class="fa-solid fa-tower-broadcast"></i>
+                                        </div>
+                                        <div>
+                                            <span class="station-lbl">Meteorological Station</span>
+                                            <h3 class="station-val" id="adv-station-name">California Region Station</h3>
+                                        </div>
+                                    </div>
+                                    <div class="advisory-header-right">
+                                        <div class="risk-info-box">
+                                            <span class="risk-lbl">Risk Index</span>
+                                            <span class="risk-val" id="adv-risk-score">32.4%</span>
+                                        </div>
+                                        <span class="risk-level-badge" id="adv-risk-level">Low Risk Level</span>
+                                    </div>
+                                </div>
+
+                                <!-- Weather Telemetry breakdown -->
+                                <div class="telemetry-grid">
+                                    <div class="telemetry-card">
+                                        <div class="tel-icon-box icon-temp">
+                                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                                        </div>
+                                        <div class="tel-text">
+                                            <span class="tel-lbl">Temperature</span>
+                                            <span class="tel-val" id="adv-temp">28.2°C</span>
+                                        </div>
+                                    </div>
+                                    <div class="telemetry-card">
+                                        <div class="tel-icon-box icon-humidity">
+                                            <i class="fa-solid fa-droplet"></i>
+                                        </div>
+                                        <div class="tel-text">
+                                            <span class="tel-lbl">Relative Humidity</span>
+                                            <span class="tel-val" id="adv-humidity">45%</span>
+                                        </div>
+                                    </div>
+                                    <div class="telemetry-card">
+                                        <div class="tel-icon-box icon-wind">
+                                            <i class="fa-solid fa-wind"></i>
+                                        </div>
+                                        <div class="tel-text">
+                                            <span class="tel-lbl">Wind Velocity</span>
+                                            <span class="tel-val" id="adv-wind">8.0 km/h</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Recommendation -->
+                                <div class="result-card">
+                                    <h4 class="card-subtitle text-alert">
+                                        <i class="fa-solid fa-triangle-exclamation"></i>
+                                        <span>Early Warning & Advice</span>
+                                    </h4>
+                                    <p class="description-text" id="adv-advice">Normal: Risk levels are currently low...</p>
+                                </div>
+
+                                <!-- Biological Indices charts -->
+                                <div class="result-card">
+                                    <h4 class="card-subtitle">
+                                        <i class="fa-solid fa-chart-simple"></i>
+                                        <span>Pathogen Exposure Indices</span>
+                                    </h4>
+                                    <div class="indices-bars">
+                                        <div class="bar-group">
+                                            <div class="bar-lbl-row">
+                                                <span>Fungal Spore Risk (Mildew/Rusts)</span>
+                                                <span id="idx-fungal-val">25.0%</span>
+                                            </div>
+                                            <div class="progress-bar-container mini">
+                                                <div class="progress-bar-fill fill-olive" id="idx-fungal-bar" style="width: 25%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="bar-group">
+                                            <div class="bar-lbl-row">
+                                                <span>Bacterial Blight Risk</span>
+                                                <span id="idx-bacterial-val">15.0%</span>
+                                            </div>
+                                            <div class="progress-bar-container mini">
+                                                <div class="progress-bar-fill fill-red" id="idx-bacterial-bar" style="width: 15%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="bar-group">
+                                            <div class="bar-lbl-row">
+                                                <span>Insect/Pest Pressure Index</span>
+                                                <span id="idx-pest-val">30.0%</span>
+                                            </div>
+                                            <div class="progress-bar-container mini">
+                                                <div class="progress-bar-fill fill-yellow" id="idx-pest-bar" style="width: 30%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= GLOBAL OUTBREAK MAP VIEW ================= -->
+                <section class="tab-view" id="view-dashboard">
+                    <!-- Dashboard Cards -->
+                    <div class="dashboard-cards-grid">
+                        <!-- Score Card (REQUIRED) -->
+                        <div class="card score-card relative-card">
+                            <div class="card-header-flex">
+                                <span class="card-mini-title">Global Health Score</span>
+                                <i class="fa-solid fa-globe card-icon text-sage"></i>
+                            </div>
+                            <div class="score-body">
+                                <h2>84.2%</h2>
+                                <div class="score-trend text-green">
+                                    <i class="fa-solid fa-arrow-trend-up"></i>
+                                    <span>+1.2% vs previous month</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-globe bg-watermark"></i>
+                        </div>
+
+                        <!-- Monitored Zones -->
+                        <div class="card score-card">
+                            <div class="card-header-flex">
+                                <span class="card-mini-title">Monitored Zones</span>
+                                <i class="fa-solid fa-map-location-dot card-icon text-sage"></i>
+                            </div>
+                            <div class="score-body">
+                                <h2 id="dash-monitored-zones">5</h2>
+                                <span class="sub-label">Active sentinel sites tracking threats</span>
+                            </div>
+                        </div>
+
+                        <!-- Mean Risk Index -->
+                        <div class="card score-card">
+                            <div class="card-header-flex">
+                                <span class="card-mini-title">Mean Risk Index</span>
+                                <i class="fa-solid fa-shield-virus card-icon text-sage"></i>
+                            </div>
+                            <div class="score-body">
+                                <h2 id="dash-mean-risk">80.8%</h2>
+                                <span class="sub-label text-yellow font-bold">Fungal pressure dominant</span>
+                            </div>
+                        </div>
+
+                        <!-- Tracked Outbreak Cases -->
+                        <div class="card score-card">
+                            <div class="card-header-flex">
+                                <span class="card-mini-title">Tracked Outbreak Cases</span>
+                                <i class="fa-solid fa-triangle-exclamation card-icon text-sage"></i>
+                            </div>
+                            <div class="score-body">
+                                <h2 id="dash-tracked-cases">10,200</h2>
+                                <span class="sub-label">Acreage-adjusted infection count</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map + Details Grid -->
+                    <div class="split-view gap-2rem">
+                        <!-- Left: Threat Map -->
+                        <div class="view-left-wide">
+                            <div class="card">
+                                <div class="card-header-flex align-center">
+                                    <div>
+                                        <h3 class="card-title-main">Geospatial Threat Map</h3>
+                                        <p class="card-subtitle-sub">Hover nodes on the map projection to review crop outbreaks.</p>
+                                    </div>
+                                    <button class="btn btn-tiny hidden" id="btn-clear-map-filter" onclick="clearMapFilter()">Clear Filter</button>
+                                </div>
+
+                                <div class="svg-map-wrapper">
+                                    <!-- World outline SVG projection -->
+                                    <svg viewBox="0 0 600 350" class="world-vector-map" id="world-map">
+                                        <!-- Continents mockup paths -->
+                                        <path d="M 50,50 L 180,50 L 200,120 L 150,180 L 100,150 Z" fill="currentColor" class="map-continent" />
+                                        <path d="M 150,180 L 210,210 L 220,320 L 170,330 L 130,220 Z" fill="currentColor" class="map-continent" />
+                                        <path d="M 240,40 L 320,40 L 320,120 L 260,130 L 230,100 Z" fill="currentColor" class="map-continent" />
+                                        <path d="M 260,130 L 320,130 L 360,250 L 310,310 L 270,200 Z" fill="currentColor" class="map-continent" />
+                                        <path d="M 320,40 L 520,50 L 480,180 L 380,220 L 320,120 Z" fill="currentColor" class="map-continent" />
+                                        <path d="M 450,230 L 520,240 L 510,290 L 460,280 Z" fill="currentColor" class="map-continent" />
+                                        
+                                        <!-- Equator line -->
+                                        <line x1="0" y1="175" x2="600" y2="175" stroke="currentColor" stroke-width="0.5" stroke-dasharray="3,3" opacity="0.3" />
+
+                                        <!-- Dynamic Map Pins -->
+                                        <!-- Coordinates:
+                                            North America: { x: 130, y: 110 }
+                                            Southern Europe: { x: 280, y: 120 }
+                                            East Africa: { x: 320, y: 220 }
+                                            South Asia: { x: 380, y: 140 }
+                                            Latin America: { x: 170, y: 270 }
+                                        -->
+                                        <g class="map-pin" data-region="North America" onclick="filterByMapRegion('North America')">
+                                            <circle cx="130" cy="110" r="12" class="pin-pulse" />
+                                            <circle cx="130" cy="110" r="5" class="pin-core fill-yellow" />
+                                        </g>
+                                        <g class="map-pin" data-region="Southern Europe" onclick="filterByMapRegion('Southern Europe')">
+                                            <circle cx="280" cy="120" r="12" class="pin-pulse" />
+                                            <circle cx="280" cy="120" r="5" class="pin-core fill-red" />
+                                        </g>
+                                        <g class="map-pin" data-region="East Africa" onclick="filterByMapRegion('East Africa')">
+                                            <circle cx="320" cy="220" r="12" class="pin-pulse" />
+                                            <circle cx="320" cy="220" r="5" class="pin-core fill-yellow" />
+                                        </g>
+                                        <g class="map-pin" data-region="South Asia" onclick="filterByMapRegion('South Asia')">
+                                            <circle cx="380" cy="140" r="12" class="pin-pulse" />
+                                            <circle cx="380" cy="140" r="5" class="pin-core fill-yellow" />
+                                        </g>
+                                        <g class="map-pin" data-region="Latin America" onclick="filterByMapRegion('Latin America')">
+                                            <circle cx="170" cy="270" r="12" class="pin-pulse" />
+                                            <circle cx="170" cy="270" r="5" class="pin-core fill-red" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Data Verification -->
+                        <div class="view-right-narrow">
+                            <div class="card verif-card">
+                                <div class="verif-header">
+                                    <div class="verif-icon-box">
+                                        <i class="fa-solid fa-database"></i>
+                                    </div>
+                                    <h3>Data Source Verification</h3>
+                                </div>
+                                <p class="verif-desc">BotanIQ aggregates crop epidemiological telemetry with secondary indexes parsed directly from global monitoring platforms.</p>
+                                
+                                <div class="sync-list">
+                                    <div class="sync-item">
+                                        <span class="sync-name">FAO GIEWS Alert</span>
+                                        <span class="sync-status text-green"><i class="fa-solid fa-circle-check"></i> Live Sync</span>
+                                    </div>
+                                    <div class="sync-item">
+                                        <span class="sync-name">USDA APHIS Database</span>
+                                        <span class="sync-status text-green"><i class="fa-solid fa-circle-check"></i> Live Sync</span>
+                                    </div>
+                                    <div class="sync-item">
+                                        <span class="sync-name">CGIAR Bioversity</span>
+                                        <span class="sync-status text-green"><i class="fa-solid fa-circle-check"></i> Live Sync</span>
+                                    </div>
+                                </div>
+
+                                <div class="sync-footer">
+                                    <i class="fa-regular fa-calendar-check"></i>
+                                    <span>Last complete intelligence sweep concluded 2.4 hours ago.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Register Table Card -->
+                    <div class="card table-card">
+                        <div class="table-header-flex">
+                            <div>
+                                <h3 class="card-title-main">Outbreak Location Registers</h3>
+                                <p class="card-subtitle-sub">Verified containment zones and vectors monitored in active crop zones.</p>
+                            </div>
+                            <div class="table-search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="outbreak-search" placeholder="Search region or crop..." oninput="filterOutbreakTable()">
+                            </div>
+                        </div>
+
+                        <div class="responsive-table-wrapper">
+                            <table class="data-table" id="outbreak-table">
+                                <thead>
+                                    <tr>
+                                        <th>Region</th>
+                                        <th>Crop</th>
+                                        <th>Threat Pathogen</th>
+                                        <th>Report Agency</th>
+                                        <th>Risk Index</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="outbreak-table-body">
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= HISTORICAL ANALYTICS VIEW ================= -->
+                <section class="tab-view" id="view-historical">
+                    <!-- Top stats cards -->
+                    <div class="dashboard-cards-grid three-col">
+                        <div class="card score-card">
+                            <div class="card-header-flex">
+                                <span class="card-mini-title">Accumulated Loss USD</span>
+                                <i class="fa-solid fa-circle-dollar-to-slot card-icon text-red"></i>
+                            </div>
+                            <div class="score-body">
+                                <h2 id="hist-accumulated-loss">$79.0M</h2>
+                                <span class="sub-label">5-year aggregate value</span>
+                            </div>
+                        </div>
+                        <div class="card score-card">
+                            <div class="card-header-flex">
+                                <span class="card-mini-title">Peak Outbreak Year</span>
+                                <i class="fa-solid fa-circle-exclamation card-icon text-yellow"></i>
+                            </div>
+                            <div class="score-body">
+                                <h2 id="hist-peak-year">2025</h2>
+                                <span class="sub-label" id="hist-peak-year-desc">780K metric tons lost</span>
+                            </div>
+                        </div>
+                        <div class="card score-card">
+                            <div class="card-header-flex">
+                                <span class="card-mini-title">Seasonal Peak Period</span>
+                                <i class="fa-solid fa-calendar-days card-icon text-sage"></i>
+                            </div>
+                            <div class="score-body">
+                                <h2>May - July</h2>
+                                <span class="sub-label">Fungal & bacterial convergence</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Grid -->
+                    <div class="split-view gap-2rem">
+                        <!-- Left Chart: Progression Line Chart -->
+                        <div class="view-left-wide">
+                            <div class="card flex-col-chart">
+                                <div class="card-header-flex chart-header-row">
+                                    <div>
+                                        <h3 class="card-title-main">Outbreak Historical Progression</h3>
+                                        <p class="card-subtitle-sub">Comparative tracking of annual crop loss totals and outbreak cases.</p>
+                                    </div>
+                                    <div class="toggle-group" id="progression-metric-toggle">
+                                        <button class="toggle-btn active" data-metric="loss">Loss (Tons)</button>
+                                        <button class="toggle-btn" data-metric="count">Outbreak Count</button>
+                                    </div>
+                                </div>
+                                <div class="chart-canvas-container" id="progression-chart-container">
+                                    <!-- Dynamic SVG chart will be rendered by JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Chart: Seasonal Area Chart -->
+                        <div class="view-right-narrow">
+                            <div class="card flex-col-chart">
+                                <div class="card-header-flex">
+                                    <div>
+                                        <h3 class="card-title-main">Annual Micro-Climate Disease Risks</h3>
+                                        <p class="card-subtitle-sub">Monthly breakdown of model risks computed across agricultural cycles.</p>
+                                    </div>
+                                </div>
+                                <div class="chart-canvas-container" id="seasonal-chart-container">
+                                    <!-- Dynamic SVG Area chart will be rendered by JS -->
+                                </div>
+                                <div class="legend-row">
+                                    <div class="legend-item"><span class="legend-dot bg-olive"></span><span>Fungal</span></div>
+                                    <div class="legend-item"><span class="legend-dot bg-red border-dashed"></span><span>Bacterial</span></div>
+                                    <div class="legend-item"><span class="legend-dot bg-yellow"></span><span>Pest</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Historical Table -->
+                    <div class="card table-card">
+                        <div class="table-header-flex">
+                            <div>
+                                <h3 class="card-title-main">Annual Loss Assessment Register</h3>
+                                <p class="card-subtitle-sub">Compiled parameters and estimates from FAO & USDA historical ledgers.</p>
+                            </div>
+                        </div>
+                        <div class="responsive-table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Crop Lost (Metric Tons)</th>
+                                        <th>Financial Impact (USD)</th>
+                                        <th>Threat Vectors Tracked</th>
+                                        <th>Primary Pathogen Concern</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="historical-table-body">
+                                    <!-- Inserted dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= DIAGNOSTICS ARCHIVE VIEW ================= -->
+                <section class="tab-view" id="view-archive">
+                    <div class="table-header-flex header-archive-row">
+                        <div>
+                            <h3 class="card-title-main">Diagnostics Archive Ledger</h3>
+                            <p class="card-subtitle-sub">Search, review, and export previous plant canopy diagnostics and treatment matrices logged in BotanIQ.</p>
+                        </div>
+                        <div class="archive-actions-row">
+                            <button class="btn btn-icon-only" onclick="refreshArchive()" title="Refresh Ledger">
+                                <i class="fa-solid fa-arrows-rotate" id="archive-refresh-icon"></i>
+                            </button>
+                            <button class="btn btn-primary" onclick="exportArchiveCSV()" id="btn-export-csv">
+                                <i class="fa-solid fa-download"></i>
+                                <span>Export CSV</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="split-view">
+                        <!-- Left List Column -->
+                        <div class="view-left">
+                            <div class="table-search-box search-archive-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="archive-search" placeholder="Filter by crop class or disease name..." oninput="filterArchiveList()">
+                            </div>
+                            
+                            <div class="archive-list-wrapper" id="archive-list-container">
+                                <!-- Dynamic archive cards insertion -->
+                            </div>
+                        </div>
+
+                        <!-- Right Drawer Details Column -->
+                        <div class="view-right">
+                            <div class="archive-details-placeholder" id="archive-details-placeholder">
+                                <i class="fa-solid fa-clock-rotate-left placeholder-archive-icon"></i>
+                                <h3>No Record Selected</h3>
+                                <p>Highlight an index card on the left to pull detailed pathological findings, treatment plans, and diagnostic imagery.</p>
+                            </div>
+
+                            <div class="archive-details-card hidden" id="archive-details-card">
+                                <div class="details-header">
+                                    <div>
+                                        <span class="details-id" id="det-record-id">Record #101</span>
+                                        <h3 class="details-title" id="det-disease-name">Tomato Late Blight</h3>
+                                    </div>
+                                    <span class="severity-badge" id="det-severity">High Severity</span>
+                                </div>
+
+                                <div class="details-rows">
+                                    <div class="details-row-item">
+                                        <span class="det-row-lbl">Diagnostic Confidence</span>
+                                        <span class="det-row-val val-highlight" id="det-confidence">94.5%</span>
+                                    </div>
+                                    <div class="details-row-item">
+                                        <span class="det-row-lbl">Analyzed Date</span>
+                                        <span class="det-row-val" id="det-timestamp">2026-06-06 12:45</span>
+                                    </div>
+                                </div>
+
+                                <div class="detail-block">
+                                    <span class="block-title">Pathological Description</span>
+                                    <p class="block-body" id="det-description">Caused by Phytophthora infestans...</p>
+                                </div>
+
+                                <div class="detail-block">
+                                    <span class="block-title">Prescribed Treatments</span>
+                                    <div class="treatments-stack" id="det-treatments">
+                                        <!-- Dynamic treatment blocks -->
+                                    </div>
+                                </div>
+
+                                <div class="detail-block">
+                                    <span class="block-title">Preventative Protocol</span>
+                                    <p class="block-body" id="det-prevention">Rotate crop zones and space tomatoes adequately.</p>
+                                </div>
+
+                                <div class="detail-image-box hidden" id="det-image-box">
+                                    <img id="det-image-preview" src="#" alt="Logged crop leaf">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Main JavaScript Code -->
+    <script src="main.js"></script>
+</body>
+</html>

@@ -56,13 +56,7 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 # Mount upload directory for serving uploaded crop images
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
 
-@app.get("/")
-def read_root():
-    return {
-        "status": "online",
-        "platform": "BotanIQ: Crop Disease Intelligence",
-        "api_docs": "/docs"
-    }
+# The root route "/" is now served by the StaticFiles mount at the end of this file.
 
 @app.post("/api/analyze", response_model=AnalysisResponse)
 async def analyze_crop(
@@ -251,3 +245,8 @@ def get_fao_reports():
     Fetch the list of FAO, USDA, and CGIAR outbreak warnings.
     """
     return FAO_USDA_CGIAR_REPORTS
+
+# Mount static files for all-Python web UI at the end so it doesn't shadow api paths
+static_dir = os.path.join(backend_dir, "static")
+os.makedirs(static_dir, exist_ok=True)
+app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")

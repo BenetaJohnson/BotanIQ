@@ -44,8 +44,7 @@ def setup_db():
 def test_read_root():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json()["status"] == "online"
-    assert "BotanIQ" in response.json()["platform"]
+    assert "BotanIQ" in response.text
 
 def test_get_stats():
     response = client.get("/api/stats")
